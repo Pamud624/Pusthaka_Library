@@ -128,7 +128,16 @@
         <td align="center" valign="middle"><img name="" src="images/configur.gif" width="100" height="75" alt=""></td>
       </tr>
       <tr>
-        <td align="center" valign="middle"><a href="config1.php">Config Settings</a> </td>
+        <td align="center" valign="middle"><a href="config300.php">Config Settings</a> </td>
+      </tr>
+    </table></td>
+
+     <td><table border="0">
+      <tr>
+        <td align="center" valign="middle"><img name="" src="images/csvupload.png" width="100" height="75" alt=""></td>
+      </tr>
+      <tr>
+        <td align="center" valign="middle"><a href="bulk_upload.php">Bulk Add</a> </td>
       </tr>
     </table></td>
   </tr>
@@ -188,7 +197,7 @@
         <td width="100" height="75" valign="middle"><img name="" src="images/backup.jpg" width="100" height="75" alt=""></td>
       </tr>
       <tr>
-        <td align="center" valign="middle"><a href="backupone.php">Daily Backups</a></td>
+        <td align="center" valign="middle"><a href="backup3.php"> Backups</a></td>
       </tr>
     </table></td>
 

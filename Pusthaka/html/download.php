@@ -5,7 +5,7 @@
     $mysqlHostName      = "localhost";
     $DbName             = "pusthaka";
     $backup_name        = "mybackup.sql";
-    $tables             = array("book", "copy");
+    $tables             = array("lending_settings");
 
    //or add 5th parameter(array) of specific tables:    array("mytable1","mytable2","mytable3") for multiple tables
 
@@ -17,7 +17,7 @@
         $mysqli->select_db($name);
         $mysqli->query("SET NAMES 'utf8'");
 
-        $queryTables    = $mysqli->query('SHOW TABLES');
+        $queryTables    = $mysqli->query("SHOW TABLES");
         while($row = $queryTables->fetch_row())
         {
             $target_tables[] = $row[0];
@@ -74,12 +74,23 @@
                 }
             } $content .="\n\n\n";
         }
-        //$backup_name = $backup_name ? $backup_name : $name."___(".date('H-i-s')."_".date('d-m-Y').")__rand".rand(1,11111111).".sql";
+        // $backup_name = $backup_name ? $backup_name : $name."___(".date('H-i-s')."_".date('d-m-Y').")__rand".rand(1,11111111).".sql";
         $date = date("Y-m-d");
         $backup_name = $backup_name ? $backup_name : $name.".$date.sql";
+        
         header('Content-Type: application/octet-stream');
         header("Content-Transfer-Encoding: Binary");
         header("Content-disposition: attachment; filename=\"".$backup_name."\"");
-        echo $content; exit;
-    }
+           
+
+        echo $content; 
+
+        exit;
+       
+   
+
+
+}
+
+
 ?>
