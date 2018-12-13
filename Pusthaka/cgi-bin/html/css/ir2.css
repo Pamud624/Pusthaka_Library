@@ -1,0 +1,79 @@
+.ir2_box{
+	vertical-align: top;	
+	background-color: #FFFFFF;
+	color: #000000;
+	border: #999999 1px solid;
+	margin: 1px;
+	padding: 2px;	
+}
+.barBox{
+	vertical-align: top;	
+	background-color: #E5FFCC;
+	color: #000000;
+	border: #999999 1px solid;
+	margin: 1px;
+	padding: 2px;
+}
+.barAccNo{
+	vertical-align: top;	
+	background-color: #FFCCCC;
+	color: #000000;
+	border: #999999 1px solid;
+	margin: 1px;
+	padding: 2px;	
+}
+.barConfirm{
+	vertical-align: top;	
+	background-color: #CCE6FF;
+	color: #000000;
+	border: #999999 1px solid;
+	margin: 1px;
+	padding: 2px;	
+}
+.barDate{
+	vertical-align: top;	
+	background-color: #FFFFFF;
+	color: #000000;
+	border: #999999 1px solid;
+	margin: 1px;
+	padding: 2px;	
+}
+.memberBox{
+	vertical-align: top;	
+	background-color: #CCFFFF;
+	color: #000000;
+	border: #999999 1px solid;
+	margin: 1px;
+	padding: 2px;
+}
+.ir2_Returnbox{
+	vertical-align: top;	
+	background-color: #CCFFCC;
+	color: #000066;
+	border: Lime 1px solid;
+	margin: 1px;
+	padding: 2px;	
+}
+.ir2_IssueBox{
+	vertical-align: top;	
+	background-color: #FFCCFF;
+	color: #000000;
+	border: Red 1px solid;
+	margin: 1px;
+	padding: 2px;	
+}
+.ir2_CurrentLoansBox{
+	vertical-align: top;	
+	background-color: #FFFFCC;
+	color: #330066;
+	border: Blue 1px solid;
+	margin: 1px;
+	padding: 2px;	
+}
+.reservationsMsg{
+	background-color: Blue;
+	color: Yellow;
+	border: Red 1px solid;
+	margin: 1px;
+	padding: 2px;			
+}
