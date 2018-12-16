@@ -11,8 +11,8 @@
     $value4 = $_REQUEST['value4'];
     
   
-      $sql = sprintf("update config1 set value=%d ,value2=%d ,value3=%d ," .
-        "value4=%d WHERE id=1", $value, $value2, $value3, $value4);
+      $sql = sprintf("update config1 set value=%f ,value2=%f ,value3=%f ," .
+        "value4=%f WHERE id=1", $value, $value2, $value3, $value4);
       $a = executeSqlNonQuery($sql);
       $rowcount = $a['rows'];
       if ($rowcount <> 1) {
@@ -105,7 +105,7 @@
   <td>
 <tr>
 
-  <u><p> <b> User priviledge Settings</b></p></u>
+  <u><p> <b><font> User priviledge Settings</font></b></p></u>
 
 
 
@@ -124,11 +124,39 @@
     <td>&nbsp;</td>
 </tr>
 
+
+  
+  <td><p> <b><font color="blue">User Category</font></b></p></td>
+   
+  
+ <td ><p><b><font color="blue">Book Type(L)</font></b></p></td>   
+ 
+    <td>&nbsp;</td>
+    
+    <!-- <td align="center" valign="middle"><a href="config4.php">Lecture Copy</a></td> -->
+    <td ><p><b><font color="blue">Book Type(LC)</font></b></p></td>   
+  
+
+  <td>&nbsp;</td>
+
+  </tr>
+
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+
+  <tr>
+
+
+
 <td> Student</td>
 
 
   
     <td align="center" valign="middle"><a href="config3.php">Lending</a></td>
+     <td>&nbsp;</td>
    <!--  <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
@@ -136,7 +164,7 @@
 
     
     <!-- <td align="center" valign="middle"><a href="config4.php">Lecture Copy</a></td> -->
-    <td><p>Lecture Copy is not allowed</p></td>
+    <td><p>Not allowed for this category</p></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
@@ -153,6 +181,7 @@
 
   
 <td align="center" valign="middle"><a href="config5.php">Lending</a></td>
+ <td>&nbsp;</td>
    <!--  <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
@@ -174,11 +203,11 @@
 
   
 <td align="center" valign="middle"><a href="config.php">Lending</a></td>
-    <!-- <td>&nbsp;</td>
     <td>&nbsp;</td>
+  
+  <!--   <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td>&nbsp;</td> -->
- 
+  -->
 <td align="center" valign="middle"><a href="config2.php">Lecture Copy</a></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
@@ -196,13 +225,14 @@
 
   
 <td align="center" valign="middle"><a href="config7.php">Lending</a></td>
+ <td>&nbsp;</td>
    <!--  <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td> -->
     
 <!-- <td align="center" valign="middle"><a href="config8.php">Lecture Copy</a></td> -->
-<td><p>Lecture Copy is not allowed</p></td>
+<td><p>Not allowed for this category</p></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
@@ -220,13 +250,14 @@
 
   
 <td align="center" valign="middle"><a href="config9.php">Lending</a></td>
+ <td>&nbsp;</td>
     <!-- <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td> -->
    
 <!-- <td align="center" valign="middle"><a href="config10.php">Lecture Copy</a></td> -->
-<td><p>Lecture Copy is not allowed</p></td>
+<td><p>Not allowed for this category</p></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
@@ -247,13 +278,14 @@
 
   
 <td align="center" valign="middle"><a href="config11.php">Lending</a></td>
+ <td>&nbsp;</td>
     <!-- <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td> -->
    
 <!-- <td align="center" valign="middle"><a href="config12.php">Lecture Copy</a></td> -->
-<td><p>Lecture Copy is not allowed</p></td>
+<td><p>Not allowed for this category</p></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
@@ -269,8 +301,10 @@
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
+
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
   <tr>
-<td><b><u>Fine Payment Settings</u></b>
+<td><b><u><font>Fine Payment Settings</font></u></b>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
@@ -280,25 +314,26 @@
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
-<tr>
-    <td>Fine for first day</td>
-    <td colspan="5"><input name="value" type="text" id="value" value="<?php echo $row['value']; ?>" size="90"></td>
+
+    <tr>
+    <td>Fine for first day (Rs)</td>
+    <td colspan="5"><input name="value" type="text" id="value" value="<?php echo $row['value']; ?>" size="15"  style="width: 100px;"></td>
     </tr>
-  <tr>
+
 
   <tr>
-    <td>Fine per day</td>
-    <td><input name="value2" type="text" id="value2" value="<?php echo $row['value2']; ?>" size="15"></td>
+    <td>Fine per day   (Rs)</td>
+    <td><input name="value2" type="text" id="value2" value="<?php echo $row['value2']; ?>" size="15"  style="width: 100px;"></td>
   </tr>
 
   <tr>
-    <td>Fine per hour</td>
-    <td><input name="value3" type="text" id="value3" value="<?php echo $row['value3']; ?>" size="15"></td>
+    <td>Fine per hour(Rs)</td>
+    <td><input name="value3" type="text" id="value3" value="<?php echo $row['value3']; ?>" size="15"  style="width: 100px;"></td>
   </tr>
 
   <tr>
     <td>Start time</td>
-    <td><input name="value4" type="text" id="value4" value="<?php echo $row['value4']; ?>" size="15"></td>
+    <td><input name="value4" type="text" id="value4" value="<?php echo $row['value4']; ?>" size="15" style="width: 100px;"></td>
   </tr>
 
   <tr>
@@ -326,7 +361,9 @@
   
 
 </tr>
+
 </table>
 </form>
+
 
 <?php include("../inc/bottom.php"); ?>
