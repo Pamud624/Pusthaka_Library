@@ -80,7 +80,7 @@
         <td align="center" valign="middle"><img name="" src="images/download.jpg" width="100" height="75" alt=""></td>
       </tr>
       <tr>
-        <td align="center" valign="middle"><a href="report.php">Get Reports </a></td>
+        <td align="center" valign="middle"><a href="report2.php">Get Reports </a></td>
       </tr>
     </table></td>
   </tr>
