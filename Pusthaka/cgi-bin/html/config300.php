@@ -242,6 +242,13 @@
     
 
 
+
+
+if(isset($_REQUEST['cancel'])){
+   header("Location: index.php");
+ }
+
+
 ?>
 
 
@@ -366,6 +373,9 @@
  <div class="span3">  <b><label><font color="blue">Fine per hour(Rs)</font></label> </b></div>
 
     <div class="span1"><input name="value3" type="text" id="value2" class="value3" value="<?php echo $row['value3']; ?>" size="15"  style="width: 100px;"></div>
+
+
+
    </div>
 
    <div class="row">
@@ -468,11 +478,24 @@
     </tr>
   </tbody>
 </table>
+
+
+<div class="row">
+    <div class="span10">
+       <div class="span6" style="width: 1300px;">
+       
+        <input type="submit" name="cancel" id="cancel" class="btn btn-info" value="Cancel" />
+     </div>
+  </div>
+</div>
 </div>
 
 
 </div>
+
+
 </form>
+
 </div>
 </div>
 
