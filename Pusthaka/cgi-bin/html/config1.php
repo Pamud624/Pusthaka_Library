@@ -37,6 +37,7 @@
 
         $sql = "SELECT * FROM config1 WHERE id =1";
         $recordset = executeSqlQuery($sql);
+
         $rowcount = mysqli_num_rows($recordset);
         if ($rowcount == 0) {
           trigger_error("There is no member with Member Number: $id", E_USER_ERROR);
@@ -46,6 +47,7 @@
           exit();
         }
         $row = mysqli_fetch_assoc($recordset);
+        print_r($row);
 
 
 
