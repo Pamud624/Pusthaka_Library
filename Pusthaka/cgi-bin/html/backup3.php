@@ -36,7 +36,6 @@ $result = $statement->fetchAll();
 
 
 
-
 //print_r($result);
 
 if(isset($_POST['table']))
@@ -49,6 +48,7 @@ if(isset($_POST['table']))
   $statement = $connect->prepare($show_table_query);
   $statement->execute();
   $show_table_result = $statement->fetchAll();
+
 
   foreach($show_table_result as $show_table_row)
   {
@@ -103,7 +103,7 @@ if(isset($_REQUEST['cancel'])){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-  <tr><u><b> <p  class="h1" align="center"><font color="blue">Pusthaka Library Backups</font></p></b></u></div></tr>
+  <tr><b> <font color="blue"><p style="font-size: 35px;" align="center" > Pusthaka Library Backups</p></font><b></tr>
     <tr>&nbsp;</tr>
     <tr>&nbsp;</tr>
     <tr>&nbsp;</tr>
@@ -207,7 +207,7 @@ if(isset($_REQUEST['cancel'])){
 
     
      <div align="left">
-     <label><input type="checkbox" class="checkbox_table" name="table[]" value="<?php echo $result[8]['Tables_in_pusthaka']; ?>" /> Reservation  </label>
+     <label><input type="checkbox" class="checkbox_table" name="table[]" value="<?php echo $result[17]['Tables_in_pusthaka']; ?>" /> Reservation  </label>
 
 
       
@@ -215,10 +215,10 @@ if(isset($_REQUEST['cancel'])){
    </div>
 
      <div align="left">
-     <label><input type="checkbox" class="checkbox_table" name="table[]" value="<?php echo $result[2]['Tables_in_pusthaka']; ?>" /> Member  </label></div>
+     <label><input type="checkbox" class="checkbox_table" name="table[]" value="<?php echo $result[11]['Tables_in_pusthaka']; ?>" /> Member  </label></div>
 
      <div align="left">
-     <label><input type="checkbox" class="checkbox_table" name="table[]" value="<?php echo $result[0]['Tables_in_pusthaka']; ?>" /> Copy  </label></div>
+     <label><input type="checkbox" class="checkbox_table" name="table[]" value="<?php echo $result[4]['Tables_in_pusthaka']; ?>" /> Copy  </label></div>
 
 
 
@@ -266,7 +266,7 @@ if(isset($_REQUEST['cancel'])){
     <div class="span11">
        <div class="span8" style="width: 1500px;">
        
-        <input type="submit" name="cancel" id="cancel" class="btn btn-info" value="Cancel" />
+        <input type="submit" name="cancel" id="cancel" class="btn btn-info" value="Back" />
      </div>
   </div>
 </div>
@@ -275,7 +275,7 @@ if(isset($_REQUEST['cancel'])){
 
 
   
-</div>
+
 </form>
 </div>
 </div>
