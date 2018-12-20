@@ -3,7 +3,7 @@
 <?php
 
 
-  $allow = "ADMIN";
+  $allow = "";
     $PageTitle = "Bulk upload";
     include('../inc/init.php'); 
 
@@ -116,7 +116,7 @@ $result = mysqli_query($connect, $query);
     <label>Select CSV File:</label>
     <input   type="file" name="file" />
     </br>
-    <input type="submit" name="submit" value="Import" class="btn btn-info" />
+    <input type="submit" name="submit" value="Upload" class="btn btn-info" />
 
 
 
