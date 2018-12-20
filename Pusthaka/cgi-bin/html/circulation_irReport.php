@@ -58,6 +58,12 @@
 		"WHERE (l.date_loaned > '%s' AND l.date_loaned < '%s') ORDER BY date_loaned DESC", $date_start, $date_end);
 		$rs1 = executeSqlQuery($sql);
 		$rs1count = mysqli_num_rows($rs1);
+		$rs4=mysqli_fetch_assoc($rs1);
+
+		//print_r($rs4);
+
+
+
 	} elseif($_REQUEST['IR']=='Returns'){
 		$sql = sprintf("select l.lid, l.copy cid, l.date_loaned, l.date_due, l.date_returned, " .
 		"l.loaned_by, c.access_no, b.*, m.mid, concat(m.title,  ' ', m.firstnames, ' ',  m.surname) AS member_name  " .
