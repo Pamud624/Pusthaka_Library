@@ -1,5 +1,5 @@
 <?php
-	$allow = "ADMIN;LIBSTAFF";
+	$allow = "";
 	$PageTitle = "Alert_Message";
 	include('../inc/init.php');
 ?>
