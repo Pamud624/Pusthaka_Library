@@ -1,13 +1,13 @@
 <?php
 //fetch.php
 $connect = mysqli_connect("localhost", "root", "", "pusthaka");
-$columns = array('pid','dt', 'amount');
+$columns = array('pid','names','dt', 'amount');
 
  //$query = "SELECT lid,member,copy,loaned_by,date_loaned FROM loan WHERE ";
 
  //CAST(date_loaned AS DATE) AS ldate
 
-    $query = "SELECT payment.pid ,payment.dt,payment.amount FROM payment  WHERE ";
+    $query = "SELECT payment.pid ,CONCAT(member.firstnames, ' ', member.surname, '(',payment.mid,')') AS names,payment.dt,payment.amount FROM payment LEFT JOIN member ON payment.mid=member.mid WHERE ";
 
 if($_POST["is_date_search"] == "yes")
 {
@@ -52,6 +52,8 @@ while($row = mysqli_fetch_array($result))
 {
  $sub_array = array();
  $sub_array[] = $row["pid"];
+  $sub_array[] = $row["names"];
+
   $sub_array[] = $row["dt"];
 
  $sub_array[] = $row["amount"];
@@ -66,7 +68,7 @@ function get_all_data($connect)
   //$query = "SELECT lid,member,copy,loaned_by, CAST(date_loaned AS DATE)  FROM loan";
 
       // $query =	"SELECT loan.lid, loan.member, loan.copy, loan.date_loaned, member.surname FROM loan LEFT JOIN member ON loan.member= member.mid";
-	$query ="SELECT payment.pid ,payment.dt,payment.amount FROM payment";
+	$query ="SELECT payment.pid ,CONCAT(member.firstnames, ' ', member.surname, '(',payment.mid,')') AS names,payment.dt,payment.amount FROM payment LEFT JOIN member ON payment.mid=member.mid";
 
  $result = mysqli_query($connect, $query);
  return mysqli_num_rows($result);
