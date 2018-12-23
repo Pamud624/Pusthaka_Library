@@ -1,7 +1,7 @@
 <?php
 
 
-  $allow = "";
+  $allow = "ADMIN;LIBSTAFF";
     $PageTitle = "Bulk upload2";
     include('../inc/init.php'); 
 
@@ -12,8 +12,25 @@
  }
 
    if(isset($_REQUEST['issue'])){
-   header("Location: report3.php");
+   header("Location: date.php");
  }
+
+  if(isset($_REQUEST['return'])){
+   header("Location: date1.php");
+ }
+
+ if(isset($_REQUEST['fine'])){
+   header("Location: fine_report.php");
+ }
+
+ if(isset($_REQUEST['lost'])){
+   header("Location: lostbook.php");
+ }
+
+  if(isset($_REQUEST['tw'])){
+   header("Location: tempwithdrw.php");
+ }
+
 
 
     ?>
@@ -89,7 +106,7 @@
 
           <div class="span13">
 
-            <div class="well" align="center">
+            <div class="well" align="center" style="border: solid black 2px">
               <div >
     <p class="h3" align="center"><b>Pusthaka Library Get Reports</b></p>   
 
@@ -98,7 +115,7 @@
 
 
 
-    <div class="well">
+    <div class="well" >
 
  <!-------------------------------------------------------------------------------------------------------------------->    
 
@@ -106,7 +123,7 @@
 
 
  <div class="span3">
-  <div class="well">
+  <div class="well" style="border: solid black 2px">
 
          
     <button type="submit" class="btn btn-success btn-lg"name="issue" id="issue">Issued Books</button>
@@ -116,7 +133,7 @@
 
 
 <div class="span3">
-  <div class="well">
+  <div class="well" style="border: solid black 2px">
    
 
     <button type="submit" class="btn btn-success btn-lg"name="return" id="return"> Returned books </button>
@@ -127,7 +144,7 @@
 
 
 <div class="span3">
-  <div class="well">
+  <div class="well" style="border: solid black 2px">
   
 
     <button type="submit" class="btn btn-success btn-lg"name="tw" id="tw">Temp Withdrawn</button>
@@ -150,7 +167,7 @@
 
 
  <div class="span3">
-  <div class="well">
+  <div class="well"style="border: solid black 2px">
 
      
      
@@ -162,7 +179,7 @@
 
 
 <div class="span3">
-  <div class="well">
+  <div class="well" style="border: solid black 2px">
    
 
     <button type="submit" class="btn btn-success btn-lg"name="damage" id="damage">Damaged</button>
@@ -173,7 +190,7 @@
 
 
 <div class="span3">
-  <div class="well">
+  <div class="well" style="border: solid black 2px">
    
 
     <button type="submit" class="btn btn-success btn-lg"name="fine" id="fine">Fine Payment</button>
