@@ -35,7 +35,7 @@
 
  </head>
  <body>
-  <div class="container box">
+  <div class="container box" style="border: solid black 2px">
    <h1 align="center">Pusthaka Library Reports Issue Books </h1>
    <br />
    <div class="table-responsive">
@@ -58,11 +58,11 @@
      <thead>
       <tr>
        <th>Loan id</th>
-       <th>member</th>
-       <th>copy</th>
-       <th>loaned_by</th>
-       <th>Book</th>
-       <th>IssueDATE</th>
+       <th>Member id</th>
+       <th>Member name</th>
+       <th>Copy id</th>
+       <th>Copy name</th>
+       <th>Issue date</th>
       </tr>
      </thead>
     </table>
