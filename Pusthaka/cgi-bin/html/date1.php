@@ -1,3 +1,10 @@
+<?php
+  $allow = "ADMIN;LIBSTAFF";
+  $PageTitle = "Circulation";
+  include('../inc/init.php');
+
+  ?>
+ <?php include("../inc/top.php"); ?>
 <html>
  <head>
   <title>Date Range Search in Datatables using PHP Ajax</title>
@@ -28,8 +35,8 @@
 
  </head>
  <body>
-  <div class="container box">
-   <h1 align="center">Date Range Search in Datatables using PHP Ajax</h1>
+  <div class="container box" style="border: solid black 2px">
+   <h1 align="center">Pusthaka Library Reports Return Books </h1>
    <br />
    <div class="table-responsive">
     <br />
@@ -51,10 +58,11 @@
      <thead>
       <tr>
        <th>Loan id</th>
-       <th>member</th>
-       <th>copy</th>
-       <th>loaned_by</th>
-       <th>IssueDATE</th>
+       <th>Member id</th>
+       <th>Return to</th>
+       <th>Copy id</th>
+       <th>Copy name</th>
+       <th>Return date</th>
       </tr>
      </thead>
     </table>
