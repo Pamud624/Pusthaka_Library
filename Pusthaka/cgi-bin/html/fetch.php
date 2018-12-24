@@ -61,9 +61,11 @@ while($row = mysqli_fetch_array($result))
  $sub_array = array();
  $sub_array[] = $row["lid"];
  $sub_array[] = $row["member"];
+  $sub_array[] = $row["names"];
+
  $sub_array[] = $row["copy"];
- $sub_array[] = $row["names"];
-  $sub_array[] = $row["title"];
+   $sub_array[] = $row["title"];
+
  $sub_array[] = $row["date_loaned"];
  $data[] = $sub_array;
  
