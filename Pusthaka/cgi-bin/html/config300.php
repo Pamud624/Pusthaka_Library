@@ -349,12 +349,12 @@ if(isset($_REQUEST['cancel'])){
 
   <div class="span11">
     <form form action="config300.php" method="post" name="my_info"  id="my_info">
-<div class="well">
+<div class="well" style="border: solid black 2px">
 
   <div>
      <p class="h3" align="center"><b>Fine Payment Settings</b></p>     
    </div>
-   <div class="well">
+   <div class="well" style="border: solid black 2px">
    <div class="row">
  <div class="span3"> <b><label><font color="blue">Fine for first day (Rs)</font></label> </b></div> 
      <div class="span1">
@@ -419,13 +419,13 @@ if(isset($_REQUEST['cancel'])){
   <div class="span11">
 
     <form form action="config300.php" method="post" name="my_info"  id="my_info">
-<div class="well">
+<div class="well" style="border: solid black 2px">
 
    <div>
      <p class="h3" align="center"><b>User Privilege Settings</b></p>     
    </div>
 
-     <div class="well">
+     <div class="well" style="border: solid black 2px">
    <table class="table table-striped">
   <thead>
     <tr>
