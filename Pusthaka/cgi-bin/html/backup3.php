@@ -171,11 +171,11 @@ if(isset($_REQUEST['cancel'])){
 
 
 <!--------------------------------------------------------------------------------------->
-<div class="row" align="center">
+<div class="row" align="center" >
 
   <div class="span13">
     <form method="post" id="export_form">
-<div class="well">
+<div class="well" style="border: solid black 2px">
 
   <div>
     <p class="h3" align="center"><b>Pusthaka Library Manual Backup</b></p>        
@@ -188,7 +188,7 @@ if(isset($_REQUEST['cancel'])){
 
 
  <div class="span5">
-  <div class="well">
+  <div class="well"  style="border: solid black 2px">
    <div>
 
      <p class="h4" align="center"><font color="blue"><b>Select table for download backups  </b></font></p>     
@@ -231,7 +231,7 @@ if(isset($_REQUEST['cancel'])){
   </div>
 
 <div class="span6">
-  <div class="well">
+  <div class="well" style="border: solid black 2px">
    <div>
 
      <p class="h4" align="center"><font color="blue"><b> Click here for full data backup   </b></font></p>     
@@ -241,7 +241,7 @@ if(isset($_REQUEST['cancel'])){
        <div align="center" >
 
    <a  href="download.php" download>
-  <img align="center" src="images/database.png" name="backup" alt="W3Schools" width="104" height="142">
+  <img align="center" src="images/database.png" name="backup" alt="W3Schools" width="114" height="142">
 </a>
 </div>
 </div>
