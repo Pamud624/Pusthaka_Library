@@ -68,7 +68,25 @@
 		
 		$msg = "<h1>Current Book: [{$bookCopy['access_no']}] {$book['title']}</h1>";
 		/* if this copy is notmarked during this inventory taking mark it */
-		$sql3 = "SELECT * FROM copy_check WHERE name='201901' AND cid=" . $bookCopy['cid'];
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+$sql1 = "SELECT * FROM config1 WHERE id =1";
+        $recordset = executeSqlQuery($sql1);
+        $rowcount = mysqli_num_rows($recordset);
+        $row = mysqli_fetch_assoc($recordset);
+
+      $year=$row['value5'];
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+		$sql3 = "SELECT * FROM copy_check WHERE name=$year AND cid=" . $bookCopy['cid'];
 		$rs3 = executeSqlQuery($sql3);
 		$rowcount3 = mysqli_num_rows($rs3);
 		if($rowcount3>0){ // already checked-in
@@ -76,7 +94,7 @@
 			$msg .= "This book is already checked-in at {$r3['datetime']}<br />";
 		} else {
 			$current_time = date("Y-m-d G:i:s");
-			$sql4 = sprintf("INSERT into copy_check (name, datetime, cid, checked, mid, comments) VALUES ('201901','%s',%d,1,%d,'')",
+			$sql4 = sprintf("INSERT into copy_check (name, datetime, cid, checked, mid, comments) VALUES ($year,'%s',%d,1,%d,'')",
 				$current_time, $bookCopy['cid'], $_SESSION['CurrentUser']['mid']);
 			$a = executeSqlNonQuery($sql4);
 			$rowsUpdated = $a['rows'];
@@ -153,6 +171,12 @@
         <table width="100%"  border="0" cellspacing="0" cellpadding="0">
           <tr>
 <td class="contents">
+
+
+
+
+
+
 <h1>Scan Barcode of Book </h1>
 <form action="ir1-inventory.php" method="post" name="ir1" class="formNormal" id="ir1">
                 <table border="0" cellspacing="0" cellpadding="0">
