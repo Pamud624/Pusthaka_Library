@@ -31,6 +31,9 @@
    header("Location: tempwithdrw.php");
  }
 
+ if(isset($_REQUEST['damage'])){
+   header("Location: damage.php");
+ }
 
 
     ?>
