@@ -74,9 +74,7 @@
 	// Select the opeartion to perform based on user input and request a conformation
 	if(isset($_REQUEST['BtnIR'])){
 		$op = ChooseOperation($_REQUEST['Number'], $rowMember);
-    
-
-		if($op[0] == 'IssueBook'){
+        	if($op[0] == 'IssueBook'){
 			$_SESSION['Confirm']['action'] = $op[0];
 			$_SESSION['Confirm']['rowMember'] = $rowMember;
 			$_SESSION['Confirm']['rowCopy'] = $op[1];
