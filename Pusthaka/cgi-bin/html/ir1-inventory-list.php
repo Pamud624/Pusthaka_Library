@@ -3,6 +3,21 @@
 	$PageTitle = "Current Inventory";
 	include('../inc/init.php');
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -68,7 +83,23 @@
 <td class="contents">
 <h1>Books Currently Checked In</h1>
 <?php
-	$sql="SELECT cc.cid, c.bid, c.access_no, b.title FROM (copy_check cc LEFT JOIN copy c ON cc.cid=c.cid) LEFT JOIN book b ON c.bid = b.bid WHERE cc.name='201901' AND (NOT c.access_no='') ORDER BY b.title, c.access_no";
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$sql1 = "SELECT * FROM config1 WHERE id =1";
+        $recordset = executeSqlQuery($sql1);
+        $rowcount = mysqli_num_rows($recordset);
+        $row = mysqli_fetch_assoc($recordset);
+
+      $year=$row['value5'];
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//	$sql="SELECT cc.cid, c.bid, c.access_no, b.title FROM (copy_check cc LEFT JOIN copy c ON cc.cid=c.cid) LEFT JOIN book b ON c.bid = b.bid WHERE cc.name='201901' AND (NOT c.access_no='') ORDER BY b.title, c.access_no";
+
+
+
+
+
+  $sql="SELECT cc.cid, c.bid, c.access_no, b.title FROM (copy_check cc LEFT JOIN copy c ON cc.cid=c.cid) LEFT JOIN book b ON c.bid = b.bid WHERE cc.name=$year AND (NOT c.access_no='') ORDER BY b.title, c.access_no";
 	$rs = executeSqlQuery($sql);
 	$cnt = mysqli_num_rows($rs);
 	echo "Total: $cnt books<hr />";
