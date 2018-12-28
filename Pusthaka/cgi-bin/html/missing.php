@@ -38,31 +38,33 @@
 
  </head>
  <body>
-  <div class="container box">
-   <h1 align="center">Pusthaka Library Reports Fine Payment </h1>
+  <div class="container box" style="border: solid black 2px">
+   <h1 align="center">Inventory Missing Report </h1>
    <br />
    <div class="table-responsive">
     <br />
     <div class="row">
-     <div class="input-daterange">
-      <div class="col-md-4">
-       <input type="text" name="start_date" id="start_date" class="form-control" />
-      </div>
-      <div class="col-md-4">
-       <input type="text" name="end_date" id="end_date" class="form-control" />
-      </div>      
-     </div>
      <div class="col-md-4">
-      <input type="button" name="search" id="search" value="Search" class="btn btn-info" />
+      
+            <form method="post" action="export3.php">
+        <input align="right"  type="submit" name="export" value="Download" class="btn btn-info" />
+        
+
+      </form>
      </div>
+     
     </div>
     <br />
     <table id="order_data" class="table table-bordered table-striped">
      <thead>
       <tr>
-       <th>Payment id</th>
-       <th>Payment id</th>
-              <th>Payment id</th>
+       <th>Copy id</th>
+       <th>Book id</th>
+              <th>Access No</th>
+              <th>Book title</th>
+
+              <th>Author</th>
+                            <th>IBSN</th>
 
 
        
