@@ -8,7 +8,7 @@ $columns = array('bid','cid', 'access_no','title','authors','barcode','isbn','pu
  //CAST(date_loaned AS DATE) AS ldate
 
    // $query = "SELECT copy_check.cid, copy.bid FROM copy_check LEFT JOIN copy ON copy.cid=copy_check.cid WHERE copy_check.name='201801' AND copy_check.checked= 0 ";
-   $query="SELECT b.bid, c.cid, c.access_no, b.title,b.authors, c.barcode, b.isbn, b.publisher, b.lang  FROM `book` b, copy c WHERE (c.bid=b.bid AND  (c.copy_status='LSt' OR c.copy_status='LS' ) )";
+   $query="SELECT b.bid, c.cid, c.access_no, b.title,b.authors, c.barcode, b.isbn, b.publisher, b.lang  FROM `book` b, copy c WHERE (c.bid=b.bid AND  (c.copy_status='LSt' OR c.copy_status='LS' OR c.copy_status='LFS') )";
 
 
 
@@ -78,7 +78,7 @@ function get_all_data($connect)
 {
 
 	//$query ="SELECT copy_check.cid, copy.bid FROM copy_check LEFT JOIN copy ON copy_check.cid=copy.cid ";
-	$query="SELECT b.bid, c.cid, c.access_no, b.title,b.authors, c.barcode, b.isbn, b.publisher, b.lang  FROM `book` b, copy c WHERE  (c.bid=b.bid AND  (c.copy_status='LSt' OR c.copy_status='LS' ) )";
+	$query="SELECT b.bid, c.cid, c.access_no, b.title,b.authors, c.barcode, b.isbn, b.publisher, b.lang  FROM `book` b, copy c WHERE  (c.bid=b.bid AND  (c.copy_status='LSt' OR c.copy_status='LS' OR c.copy_status='LFS' ) )";
 
 
  $result = mysqli_query($connect, $query);
