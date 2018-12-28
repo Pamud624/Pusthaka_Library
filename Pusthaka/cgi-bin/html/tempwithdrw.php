@@ -48,7 +48,16 @@
      
      <div class="col-md-4">
 <!--       <input type="button" name="search" id="search" value="Search" class="btn btn-info" />
- -->     </div>
+ -->    
+
+ <form method="post" action="export1.php">
+        <input align="right"  type="submit" name="export" value="Download" class="btn btn-info" />
+        
+
+      </form>
+
+
+  </div>
     </div>
     <br />
     <table id="order_data" class="table table-bordered table-striped" >
