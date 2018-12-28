@@ -35,6 +35,10 @@
    header("Location: damage.php");
  }
 
+ if(isset($_REQUEST['miss'])){
+   header("Location: missing.php");
+ }
+
 
     ?>
 <?php include("../inc/top.php"); ?>
@@ -208,6 +212,28 @@
        </div>
 
 <!------------------------------------------------------------------------------------------------------------->
+
+
+<div class="row">
+
+
+ <div class="span3">
+  <div class="well" style="border: solid black 2px">
+
+         
+    <button type="submit" class="btn btn-success btn-lg"name="miss" id="miss">Inventory Missing</button>
+        
+</div>
+  </div>
+
+
+       </div>
+
+
+
+
+
+<!------------------------------------------------------------------------------------------------------------------>
 
   <div class="row">
     <div class="span10">
