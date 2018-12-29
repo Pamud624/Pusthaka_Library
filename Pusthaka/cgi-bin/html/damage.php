@@ -38,7 +38,6 @@
 
  </head>
  <body>
-  <form action="fetch3.php">
   <div class="container box" style="border: solid black 2px">
    <h1 align="center">Pusthaka Library Reports Damage Books </h1>
    <br />
@@ -48,7 +47,15 @@
      
      <div class="col-md-4">
 <!--       <input type="button" name="search" id="search" value="Search" class="btn btn-info" />
- -->     </div>
+ -->    
+         <form method="post" action="export2.php">
+        <input align="right"  type="submit" name="export" value="Download" class="btn btn-info" />
+        
+
+      </form>
+
+      
+  </div>
     </div>
     <br />
     <table id="order_data" class="table table-bordered table-striped" >
@@ -84,7 +91,7 @@
     
    </div>
   </div>
-  </form>
+
  </body>
 </html>
 
