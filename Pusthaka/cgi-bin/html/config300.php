@@ -27,6 +27,34 @@
       }
   } //END: update my_info
 
+if(isset($_REQUEST['invent'])){
+    $value = $_REQUEST['inventt'];
+    
+    
+  
+      $sql = sprintf("update config1 set value5=%s WHERE id=1", $value);
+      $a = executeSqlNonQuery($sql);
+      $rowcount = $a['rows'];
+      if ($rowcount <> 1) {
+       // $_SESSION['BackLink'] = $_SERVER['PHP_SELF'];
+        //trigger_error("An error occured while updating member: ID=" . $mid, E_USER_ERROR);
+         header("Location: config300.php");
+        exit();
+      } else {
+        $_SESSION['msg'] = "Your information was updated.";
+        header("Location: config300.php");
+        exit();
+      }
+  }
+
+
+
+
+
+
+
+
+
 
   // Change Password ////////////////////////////////////////////////////
 
@@ -207,6 +235,12 @@
           exit();
         }
         $row12 = mysqli_fetch_assoc($recordset);
+
+
+
+
+
+
 
 
 
@@ -393,6 +427,52 @@ if(isset($_REQUEST['cancel'])){
 
 <!------------------------------------------------------------------------------------------------------------->
 
+<div class="row" align="center">
+
+  <div class="span11">
+    <form form action="config300.php" method="post" name="my_info"  id="my_info">
+<div class="well" style="border: solid black 2px">
+
+  <div>
+     <p class="h3" align="center"><b>Inventory Check Settings</b></p>     
+   </div>
+   <div class="well" style="border: solid black 2px">
+
+
+    <div class="row">
+ <div class="span3">  <b><label><font color="blue">Inventory Check year</font></label> </b></div>
+
+   <div class="span1" > <input name="value2" type="text" id="value2" class="value2" value="<?php echo substr($row['value5'],0,4); ?>" size="15"  style="width: 100px;" readonly></div>
+   <div class="span3"><select name="inventt" style="width: 114px;">
+    <option value="201801">2018</option>
+    <option value="201901">2019</option>
+    <option value="202001">2020</option>
+    <option value="202101">2021</option>
+    <option value="202201">2022</option>
+    <option value="202301">2023</option>
+    <option value="202401">2024</option>
+    <option value="202501">2025</option>
+    <option value="202601">2026</option>
+    <option value="202701">2027</option>
+    <option value="202801">2028</option>
+  </select></div>
+
+   <div class="span1">   <input name="invent" type="submit"  class="btn btn-info" id="invent" value="Set Year">
+</div>
+
+
+   </div>
+  
+
+   
+</div>
+
+  
+</div>
+</form>
+</div>
+</div>
+
 
 
 <!------------------------------------------------------------------------------------------------------------->
@@ -401,16 +481,6 @@ if(isset($_REQUEST['cancel'])){
 
 <div class="row" align="center">
 
-<!------------------------------------------------------------------------------------------------------------->
-
-<!------------------------------------------------------------------------------------------------------------->
-
-
-
-
-
-
-<!------------------------------------------------------------------------------------------------------------->
 
 
 
@@ -484,7 +554,7 @@ if(isset($_REQUEST['cancel'])){
     <div class="span10">
        <div class="span6" style="width: 1300px;">
        
-        <input type="submit" name="cancel" id="cancel" class="btn btn-info" value="Cancel" />
+        <input type="submit" name="cancel" id="cancel" class="btn btn-info" value="Back" />
      </div>
   </div>
 </div>
@@ -497,10 +567,18 @@ if(isset($_REQUEST['cancel'])){
 </form>
 
 </div>
+
+
 </div>
 
+<!---------------------------------------------------------------------------------------------------------------------------->
 
 
+
+
+
+
+<!---------------------------------------------------------------------------------------------------------------------------->
 
 <!-- <script >
   
