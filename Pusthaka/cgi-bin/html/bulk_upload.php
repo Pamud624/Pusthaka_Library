@@ -3,11 +3,11 @@
 <?php
 
 
-  $allow = "";
+  $allow = "ADMIN";
     $PageTitle = "Bulk upload";
     include('../inc/init.php'); 
 
-$connect=mysqli_connect("localhost","root","","test");
+$connect=mysqli_connect("localhost","root","","pusthaka");
 
 $message = '';
 
@@ -22,12 +22,27 @@ if(isset($_POST["upload"]))
    while($data = fgetcsv($handle))
        while ($data =fgetcsv($handle)) {
                 
-                $mid=mysqli_real_escape_string($connect,$data[0]);
-              $username=mysqli_real_escape_string($connect,$data[1]);
-              $email=mysqli_real_escape_string($connect,$data[2]);
-              $address=mysqli_real_escape_string($connect,$data[3]);
+                $mem_no=mysqli_real_escape_string($connect,$data[0]);
+              $type=mysqli_real_escape_string($connect,$data[1]);
+              $surname=mysqli_real_escape_string($connect,$data[2]);
+              $firstnames=mysqli_real_escape_string($connect,$data[3]);
+              $title=mysqli_real_escape_string($connect,$data[4]);
+              $address=mysqli_real_escape_string($connect,$data[5]);
+              $nic=mysqli_real_escape_string($connect,$data[6]);
+              $reg_no=mysqli_real_escape_string($connect,$data[7]);
+              $sex=mysqli_real_escape_string($connect,$data[8]);
+              $phone=mysqli_real_escape_string($connect,$data[9]);
+              $email=mysqli_real_escape_string($connect,$data[10]);
+              $index_no=mysqli_real_escape_string($connect,$data[11]);
+              $username=mysqli_real_escape_string($connect,$data[12]);
+              $password=mysqli_real_escape_string($connect,$data[13]);
+              $login_type=mysqli_real_escape_string($connect,$data[14]);
+              $category=mysqli_real_escape_string($connect,$data[15]);
+              $barcode=mysqli_real_escape_string($connect,$data[16]);
+              $expired=mysqli_real_escape_string($connect,$data[17]);
 
-             $query = "UPDATE users SET username='$username', email='$email', address='$address' WHERE mid= '$mid '";
+
+             $query = "UPDATE member SET type='$type', surname='$surname', firstnames='$firstnames',title=$title , address='$address', nic='$nic', reg_no='$reg_no', sex='$sex',phone='$phone',email='$email', index_no='$index_no', username='$username',password='$password',login_type='$login_type',category='$category',barcode='$barcode',expired='$expired' WHERE mem_no= '$mem_no'";
              mysqli_query($connect,$query);
               
             }
@@ -50,7 +65,7 @@ if(isset($_GET["updation"]))
  $message = '<label class="text-success">Product Updation Done</label>';
 }
 
-$query="SELECT * FROM users";
+$query="SELECT * FROM member ORDER BY mid DESC";
 $result = mysqli_query($connect, $query);
 ?>
 
@@ -107,7 +122,7 @@ $result = mysqli_query($connect, $query);
  <div class="row" align="center">
  
 
- <div class="well">
+ <div class="well" style="border: solid black 2px">
   <div><p class="h3"  align="center"><b>Pusthaka Library Bulk List Upload </b></p> </div>
 </br>
   <form method="post" enctype="multipart/form-data">
@@ -131,7 +146,7 @@ $result = mysqli_query($connect, $query);
    </form> -->
    <br />
    <?php echo $message; ?>
-   <div class="well">
+   <div class="well" style="border: solid black 2px">
   <div><p class="h3"  align="center"><b> Details of the members </b></p> </div>
    
    <br />
@@ -150,9 +165,11 @@ $result = mysqli_query($connect, $query);
      echo '
            <tr>
              <td>'.$row["mid"].'</td>
-             <td>'.$row["username"].'</td>
+             <td>'.$row["firstnames"].' '.$row["surname"].'</td>
              <td>'.$row["email"].'</td>
               <td>'.$row["address"].'</td>
+                           <td>'.$row["nic"].'</td>
+
 
            </tr>
          ';
