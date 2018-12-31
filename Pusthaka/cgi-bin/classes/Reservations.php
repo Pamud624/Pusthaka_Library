@@ -46,9 +46,9 @@ class Reservations{
 	function GetByID($rid){ // returns a row
 		$sql = sprintf("SELECT * FROM reservation WHERE rid=%d", $rid);
 		$rs = executeSqlQuery($sql);
-        $cnt = mysql_num_rows($rs);
+        $cnt = mysqli_num_rows($rs);
         if($cnt==1){
-            $row = mysql_fetch_assoc($rs);
+            $row = mysqli_fetch_assoc($rs);
             return $row;
         } else {
             return 0;   
@@ -60,11 +60,11 @@ class Reservations{
 		/** Check mid and retriew memberRow */
 		$sql = 'SELECT * FROM member WHERE mid=' . $mid;
 		$rs = executeSqlQuery($sql);
-		$cnt = mysql_num_rows($rs);
+		$cnt = mysqli_num_rows($rs);
 		if($cnt==0){
 			return 'ERROR: invalid member ID specified';
 		} elseif ($cnt==1){
-			$rowMember = mysql_fetch_assoc($rs);
+			$rowMember = mysqli_fetch_assoc($rs);
 		}
 		
 		
@@ -73,7 +73,7 @@ class Reservations{
 			"(bid=%d AND mid=%d)",
 			$bid,$mid);
 		$rs = executeSqlQuery($sql);
-		$count = mysql_num_rows($rs);
+		$count = mysqli_num_rows($rs);
 		if ($count > 0){			
 			return "ERROR: This book is already reserved by you.";
 		}
@@ -84,7 +84,7 @@ class Reservations{
 			"LEFT JOIN book b ON c.bid=b.bid WHERE (b.bid=%d AND l.member=%d AND l.returned=0)",
 			$bid,$mid);
 		$rs = executeSqlQuery($sql);
-		$count = mysql_num_rows($rs);
+		$count = mysqli_num_rows($rs);
 		if ($count > 0){			
 			return 'ERROR: Reservation not allowed:<br>' .
 				"This book is already on loan with you.";
@@ -94,19 +94,19 @@ class Reservations{
 		/** Check if there are copies of the book for which the current user has borrowing permission */
 		$sql = sprintf("SELECT * FROM copy WHERE bid=%d", $bid);
 		$copies = executeSqlQuery($sql);
-		$cnt = mysql_num_rows($copies);
+		$cnt = mysqli_num_rows($copies);
 		if ($cnt == 0){			
 			return "ERROR: No copy of this book is available.";
 		}
 		$found = false;
 		$foundAndAvailable = false;
-		while($cpy = mysql_fetch_assoc($copies)){ // for all the copies
+		while($cpy = mysqli_fetch_assoc($copies)){ // for all the copies
 			// check if the user has permission to borrow this copy
 			
 			$sql = sprintf("select * from lending_settings where book_type='%s' AND member_type='%s'",
 				$cpy['lending_type'], $rowMember['category']);
 			$rs = executeSqlQuery($sql);
-			$cnt = mysql_num_rows($rs);
+			$cnt = mysqli_num_rows($rs);
 			if ($cnt==0){ // No entry 
 				return "ERROR: The lending settings for this (member category <--> book lending type) " .
 					"is not defined.<br>" .
@@ -114,7 +114,7 @@ class Reservations{
 					$cpy['lending_type'] . "<br>" .
 				"Please ask the SYS ADMIN to define these settings.";
 			} elseif ($cnt==1){ //There is an entry
-				$sr = mysql_fetch_assoc($rs); // (Lending) Settings Row 
+				$sr = mysqli_fetch_assoc($rs); // (Lending) Settings Row 
 			} elseif($cnt>1){  // Duplicate entry
                 return "ERROR: The lending_settings table contains a duplicate entry for:<br>" .
                     "Member Category = " . $rowMember['category'] . ", Book Lending Type = " .	$cpy['lending_type'] . "<br>" .
@@ -129,7 +129,7 @@ class Reservations{
 				// Check if this book is available
 				$sql = 'SELECT * FROM loan WHERE returned=0 AND copy=' . $cpy['cid'];
 				$rs = executeSqlQuery($sql);
-				$cnt = mysql_num_rows($rs);
+				$cnt = mysqli_num_rows($rs);
 				if($cnt==0){ // Book available for loan
 					$foundAndAvailable = true;
 				} elseif($cnt>1){ // Data consistancy error
@@ -187,13 +187,13 @@ class Reservations{
         
 			$sql = "SELECT * FROM reservation WHERE rid=" . $rid;
 			$rs = executeSqlQuery($sql);
-			$r = mysql_fetch_assoc($rs);
+			$r = mysqli_fetch_assoc($rs);
 			$cid = $r['cid'];
 			
 			if($cid>0){			
 				$sql = sprintf("select c.*, b.* FROM (copy c LEFT JOIN book b ON  c.bid = b.bid) WHERE c.cid=%d", $cid);
 				$rs = executeSqlQuery($sql);
-				$rowCopy = mysql_fetch_assoc($rs);
+				$rowCopy = mysqli_fetch_assoc($rs);
 				return $this->updateReservations($rowCopy);
 			}
 						
@@ -210,7 +210,7 @@ function updateReservations($rowCopy){
 	$rs = executeSqlQuery($sql);
 	
 	// Set status from 'Available' to 'Expired' for the relevant reservations
-	while($r = mysql_fetch_assoc($rs)){
+	while($r = mysqli_fetch_assoc($rs)){
 		if(strtotime($r['dt_end']) < time()){ // the waiting period has passed
 			// Set status
 			$sql2 = sprintf("UPDATE reservation SET status='Expired', dt_end='%s' WHERE rid=%d",
@@ -229,7 +229,7 @@ function updateReservations($rowCopy){
 			$sql3 = sprintf("SELECT c.*, b.* FROM copy c LEFT JOIN book b ON c.bid=b.bid WHERE c.cid=%d",
 				$rowCopy['cid']);
 			$rs3 = executeSqlQuery($sql3);
-			$rowCopy3 = mysql_fetch_assoc($rs3);
+			$rowCopy3 = mysqli_fetch_assoc($rs3);
 			updateReservations($rowCopy3);
 		}
 	}
@@ -239,7 +239,7 @@ function updateReservations($rowCopy){
 		"FROM reservation r LEFT JOIN member m ON r.mid=m.mid WHERE r.bid=%d AND r.status='Active' " .
 		"ORDER BY dt_start ASC", $rowCopy['bid']);
 	$rs = executeSqlQuery($sql);
-	$cnt = mysql_num_rows($rs);
+	$cnt = mysqli_num_rows($rs);
 	if($cnt>0){
 		// Set the first (Active --> Available)
 		$availablePeriod = $RESERVATIONS_VALID_PERIOD;
@@ -248,7 +248,7 @@ function updateReservations($rowCopy){
 		$dt_endTS = mktime($hr,$mn,$se,$m,$d+$availablePeriod,$y);
 		$dt_end = date("Y-m-d G:i:s",$dt_endTS);
 		
-		$r = mysql_fetch_assoc($rs);
+		$r = mysqli_fetch_assoc($rs);
 		$sql = sprintf("UPDATE reservation SET status='Available', dt_end='%s', cid=%d WHERE rid=%d",
 			$dt_end, $rowCopy['cid'], $r['rid']);
 		$a = executeSqlNonQuery($sql);
@@ -259,7 +259,7 @@ function updateReservations($rowCopy){
 		// Retrieve member information
 		$sqlT = 'SELECT * FROM member WHERE mid=' . $r['mid'];
 		$rsT = executeSqlQuery($sqlT);
-		$rMember = mysql_fetch_assoc($rsT);
+		$rMember = mysqli_fetch_assoc($rsT);
 
         // Log Event
 		$des = '[' . $rowCopy['access_no'] . '] ' . $rowCopy['title'] . ' ==> ' . '[' . $rMember['title'] . ' ' . $rMember['firstnames'] . ' ' . $rMember['surname'] . ']';
