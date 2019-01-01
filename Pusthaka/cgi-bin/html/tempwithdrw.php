@@ -38,7 +38,7 @@
 
  </head>
  <body>
-  <form action="fetch3.php">
+  
   <div class="container box" style="border: solid black 2px">
    <h1 align="center">Pusthaka Library Reports Temporary Withdarwn </h1>
    <br />
@@ -93,7 +93,7 @@
     
    </div>
   </div>
-  </form>
+  
  </body>
 </html>
 
@@ -122,6 +122,7 @@ $(document).ready(function(){
    }
   });
  }
+
 
  $('#search').click(function(){
   var start_date = $('#start_date').val();
