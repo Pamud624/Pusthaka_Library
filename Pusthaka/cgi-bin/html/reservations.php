@@ -3,6 +3,7 @@
 	$PageTitle = "Reservations";
 	include('../inc/init.php');
 	include('../classes/Reservations.php');
+  
 
 	$re = new Reservations;
 	$rs = $re->GetReservedBooks();
