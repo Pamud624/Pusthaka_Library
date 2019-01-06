@@ -1,6 +1,31 @@
 <?php
-//fetch.php
-$connect = mysqli_connect("localhost", "root", "", "pusthaka");
+  include('../config/setup2.php');
+
+
+
+
+
+
+// if(isset($_REQUEST['search'])){
+//     $value = $_REQUEST['start_date'];
+//     $value2 = $_REQUEST['end_date'];
+   
+    
+  
+//       $sql = sprintf("update config1 set start_date=%f  WHERE id=1", $value, $value2);
+//       $a = executeSqlNonQuery($sql);
+    
+      
+
+
+// }
+
+
+
+
+
+
+//$connect = mysqli_connect("localhost", "root", "", "pusthaka");
 $columns = array('lid', 'member','copy','names','title','date_loaned' );
 
  //$query = "SELECT lid,member,copy,loaned_by,date_loaned FROM loan WHERE ";
@@ -12,6 +37,7 @@ $columns = array('lid', 'member','copy','names','title','date_loaned' );
 // $query = "SELECT loan.lid, loan.member, loan.copy,CONCAT(member.firstnames, ',', member.surname) AS names, loan.date_loaned FROM loan LEFT JOIN member ON loan.member= member.mid WHERE ";
 
 $query = "SELECT loan.lid, loan.member, loan.copy,CONCAT(member.firstnames, ',', member.surname) AS names,book.title, loan.date_loaned FROM loan LEFT JOIN member ON loan.member= member.mid LEFT JOIN copy ON loan.copy=copy.cid LEFT JOIN book ON copy.bid=book.bid WHERE ";
+
 
 
 
@@ -72,6 +98,15 @@ while($row = mysqli_fetch_array($result))
 }
 
 
+
+
+
+
+
+
+
+
+
 function get_all_data($connect)
 {
   //$query = "SELECT lid,member,copy,loaned_by, CAST(date_loaned AS DATE)  FROM loan";
@@ -97,3 +132,5 @@ echo json_encode($output);
 //print_r($output);
 
 ?>
+
+
