@@ -1,4 +1,5 @@
 <?php 
+  include('../config/setup2.php');
 
 
 if(isset($_POST["export"]))
@@ -30,7 +31,6 @@ $sql1 = "SELECT * FROM config1 WHERE id =1";
       $year=$row['value5'];
 
 
-$connect = mysqli_connect("localhost","root","","pusthaka");
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=data.csv');
 $output = fopen("php://output", "w");
