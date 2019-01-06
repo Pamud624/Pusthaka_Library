@@ -1,7 +1,9 @@
 <?php
-//fetch.php
-$connect = mysqli_connect("localhost", "root", "", "pusthaka");
-$columns = array('lid', 'member','copy','names','title','date_loaned' );
+
+
+  include('../config/setup2.php');
+
+$columns = array('lid', 'member','copy','names','title','date_returned' );
 
  //$query = "SELECT lid,member,copy,loaned_by,date_loaned FROM loan WHERE ";
 
@@ -11,13 +13,13 @@ $columns = array('lid', 'member','copy','names','title','date_loaned' );
 
 // $query = "SELECT loan.lid, loan.member, loan.copy,CONCAT(member.firstnames, ',', member.surname) AS names, loan.date_loaned FROM loan LEFT JOIN member ON loan.member= member.mid WHERE ";
 
-$query = "SELECT loan.lid, loan.member, loan.copy,CONCAT(member.firstnames, ' ', member.surname, '(',loan.loaned_by,')') AS names,book.title, loan.date_loaned FROM loan LEFT JOIN member ON loan.loaned_by= member.mid LEFT JOIN copy ON loan.copy=copy.cid LEFT JOIN book ON copy.bid=book.bid WHERE ";
+$query = "SELECT loan.lid, loan.member, loan.copy,CONCAT(member.firstnames, ' ', member.surname, '(',loan.loaned_by,')') AS names,book.title, loan.date_returned FROM loan LEFT JOIN member ON loan.loaned_by= member.mid LEFT JOIN copy ON loan.copy=copy.cid LEFT JOIN book ON copy.bid=book.bid WHERE loan.date_returned !='0000-00-00 00:00:00' AND ";
 
 
 
 if($_POST["is_date_search"] == "yes")
 {
- $query .= 'CAST(date_loaned AS DATE) BETWEEN "'.$_POST["start_date"].'" AND "'.$_POST["end_date"].'" AND ';
+ $query .= 'CAST(date_returned AS DATE) BETWEEN "'.$_POST["start_date"].'" AND "'.$_POST["end_date"].'" AND ';
 }
 
 if(isset($_POST["search"]["value"]))
@@ -66,7 +68,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = $row["copy"];
    $sub_array[] = $row["title"];
 
- $sub_array[] = $row["date_loaned"];
+ $sub_array[] = $row["date_returned"];
  $data[] = $sub_array;
  
 }
@@ -79,7 +81,7 @@ function get_all_data($connect)
       // $query =	"SELECT loan.lid, loan.member, loan.copy, loan.date_loaned, member.surname FROM loan LEFT JOIN member ON loan.member= member.mid";
 	// $query ="SELECT loan.lid, loan.member, loan.copy,member.surname, loan.date_loaned FROM  loan LEFT JOIN member ON loan.member= member.mid ";
       
-   $query ="SELECT loan.lid, loan.member, loan.copy,CONCAT(member.firstnames, ',', member.surname, '(',loan.loaned_by,')') AS names,book.title, loan.date_loaned FROM loan LEFT JOIN member ON loan.loaned_by= member.mid LEFT JOIN copy ON loan.copy=copy.cid LEFT JOIN book ON copy.bid=book.bid ";
+   $query ="SELECT loan.lid, loan.member, loan.copy,CONCAT(member.firstnames, ' ', member.surname, '(',loan.loaned_by,')') AS names,book.title, loan.date_returned FROM loan LEFT JOIN member ON loan.loaned_by= member.mid LEFT JOIN copy ON loan.copy=copy.cid LEFT JOIN book ON copy.bid=book.bid WHERE loan.date_returned !='0000-00-00 00:00:00' ";
 
  $result = mysqli_query($connect, $query);
  return mysqli_num_rows($result);
