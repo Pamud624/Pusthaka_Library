@@ -1,6 +1,7 @@
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "", "pusthaka");
+  include('../config/setup2.php');
+
 $columns = array('bid','cid', 'access_no','title','authors','barcode','isbn','publisher','lang');
 
  //$query = "SELECT lid,member,copy,loaned_by,date_loaned FROM loan WHERE ";
