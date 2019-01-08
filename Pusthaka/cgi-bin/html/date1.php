@@ -40,19 +40,55 @@
    <br />
    <div class="table-responsive">
     <br />
-    <div class="row">
-     <div class="input-daterange">
-      <div class="col-md-4">
-       <input type="text" name="start_date" id="start_date" class="form-control" />
+ <form action="export4.php" method="POST">
+
+<div class="row">
+  <div class="col-md-4">
+                <input align="right"  type="submit" name="export" value="Download" class="btn btn-info" />
       </div>
-      <div class="col-md-4">
-       <input type="text" name="end_date" id="end_date" class="form-control" />
-      </div>      
+</div>
+
+<br/>
+
+
+    <div class="row">
+
+
+
+
+     <div class="input-daterange">
+
+
+
+       <div class="col-md-1">
+
+        <p><b>To</b></p>
+    </div>
+
+      <div class="col-md-2">
+         <input  type="text" name="start_date" id="start_date" class="form-control" method="POST"   />
+      </div>
+    <div class="col-md-1">
+
+        <p><b>From</b></p>
+    </div>
+    
+      <div class="col-md-2">
+       <input type="text" name="end_date" id="end_date" class="form-control" method="POST" />
+      </div> 
+
+
+
      </div>
+
      <div class="col-md-4">
       <input type="button" name="search" id="search" value="Search" class="btn btn-info" />
      </div>
+
+
+
     </div>
+</form>
     <br />
     <table id="order_data" class="table table-bordered table-striped">
      <thead>
