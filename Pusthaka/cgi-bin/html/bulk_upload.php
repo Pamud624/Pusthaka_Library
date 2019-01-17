@@ -7,7 +7,8 @@
     $PageTitle = "Bulk upload";
     include('../inc/init.php'); 
 
-$connect=mysqli_connect("localhost","root","","pusthaka");
+  include('../config/setup2.php');
+
 
 $message = '';
 
@@ -152,7 +153,8 @@ $result = mysqli_query($connect, $query);
    <br />
    
    <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+ <!--    <table class="table table-bordered table-striped"> -->
+     <table class="table table-bordered table-striped" id="data-table">
      <tr>
       <th>ID</th>
        <th>Username</th>
