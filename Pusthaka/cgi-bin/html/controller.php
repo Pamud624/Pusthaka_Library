@@ -1,5 +1,10 @@
 <?php 
 //Time Zone Set
+
+  include('../config/setup2.php');
+
+
+
 	date_default_timezone_set("Asia/Colombo");
     $date=date("Y-m-d");
     $time=date("H:i:s");
@@ -31,12 +36,18 @@ $period = new DatePeriod($start, new DateInterval('P1D'), $end);
 // best stored as array, so you can add more than one
 //$holidays = array('2016-12-15', '2016-12-16');
 		//require('../config/setup.php');
-		$db['server'] = "localhost";
-		$db['username'] ="root";
-		$db['password'] = "";
-		$db['database'] = "pusthaka_ucsc";
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		// $db['server'] = "localhost";
+		// $db['username'] ="root";
+		// $db['password'] = "";
+		// $db['database'] = "pusthaka_ucsc";
 		
-		$con = mysqli_connect($db['server'],$db['username'],$db['password'],$db['database']);
+		// $con = mysqli_connect($db['server'],$db['username'],$db['password'],$db['database']);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		//mysqli_select_db($db['database'], $con);
 		$sql = "SELECT * FROM holidays";
 		$rs = mysqli_query($con, $sql);
