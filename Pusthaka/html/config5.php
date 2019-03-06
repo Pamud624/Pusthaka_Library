@@ -18,7 +18,7 @@
     if(isset($_REQUEST['allowed']) && $_REQUEST['allowed']== 1){
   
       $sql = sprintf("update lending_settings set allowed=%d, num_allowed=%d," .
-        "days_allowed=%d , privile='%s' WHERE id=4",$allowed, $num_allowed, $days_allowed, $abc);
+        "days_allowed=%d , privile='%s' WHERE id=4",1, $num_allowed, $days_allowed, $abc);
       $a = executeSqlNonQuery($sql);
 
       $rowcount = $a['rows'];
@@ -35,7 +35,7 @@
       }
     }elseif (isset($_REQUEST['allowed']) && $_REQUEST['allowed']==0) {
       $sql = sprintf("update lending_settings set allowed=%d, num_allowed=%d," .
-        "days_allowed=%d, privile='%s' WHERE id=4",$allowed, 0, 0,$cdf);
+        "days_allowed=%d, privile='%s' WHERE id=4",0, 0, 0,$cdf);
       $a = executeSqlNonQuery($sql);
 
       $rowcount = $a['rows'];
@@ -52,8 +52,8 @@
       
     }
     else
-       $sql = sprintf("update lending_settings set allowed=%d, num_allowed=%d," .
-        "days_allowed=%d  WHERE id=4",$allowed, $num_allowed, $days_allowed);
+       $sql = sprintf("update lending_settings set  num_allowed=%d," .
+        "days_allowed=%d  WHERE id=4", $num_allowed, $days_allowed);
       $a = executeSqlNonQuery($sql);
 
       $rowcount = $a['rows'];
